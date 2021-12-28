@@ -32,7 +32,7 @@ final class FriendsViewController: UITableViewController {
                                          y: scopeView.frame.origin.y,
                                          width: scopeView.frame.width,
                                          height: scopeView.frame.height)
-                placeholderLabel.frame.origin.x -= 20
+                placeholderLabel.frame.origin.x = 10
                 self.searchBar.layoutSubviews()
             })
         }
@@ -174,12 +174,13 @@ extension FriendsViewController: UISearchBarDelegate {
         UIView.animate(withDuration: 0.2, animations: {
             searchBar.showsCancelButton = false
             searchBar.text = ""
+            self.filteredFriends = self.friends
+            self.tableView.reloadData()
             searchBar.resignFirstResponder()
         }, completion: { _ in
             let closure = self.searchBarAnimateClosure()
             closure()
         })
-        self.tableView.reloadData()
     }
 }
 

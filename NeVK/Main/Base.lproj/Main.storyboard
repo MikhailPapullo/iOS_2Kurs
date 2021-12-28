@@ -352,7 +352,7 @@
         <!--Друзья-->
         <scene sceneID="AN9-UG-qXb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PYX-C2-cg5" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PYX-C2-cg5" customClass="CustomNavigationController" customModule="NeVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" image="person.2.fill" catalog="system" id="x1h-0N-Vr0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bnt-FX-oE4">
@@ -438,7 +438,7 @@
         <!--Группы-->
         <scene sceneID="SEh-ts-IJb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PP4-Ig-ejQ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PP4-Ig-ejQ" customClass="CustomNavigationController" customModule="NeVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Группы" image="rectangle.on.rectangle.fill" catalog="system" id="a9z-Lm-lVF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ywh-Hc-zw9">
