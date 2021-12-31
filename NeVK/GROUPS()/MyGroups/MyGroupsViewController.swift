@@ -8,8 +8,6 @@
 import UIKit
 
 final class MyGroupsViewController: UITableViewController {
-
-//    @IBOutlet weak var tableView: UITableView!
     
     var myGroups: [GroupModel] = []
 

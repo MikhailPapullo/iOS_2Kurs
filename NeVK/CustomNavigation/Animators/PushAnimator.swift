@@ -8,7 +8,7 @@
 import UIKit
 
 class PushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    private let duration: TimeInterval = 3
+    private let duration: TimeInterval = 0.5
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         duration
@@ -19,26 +19,30 @@ class PushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         guard let destination = transitionContext.viewController(forKey: .to) else { return }
 
         transitionContext.containerView.addSubview(destination.view)
-        transitionContext.containerView.sendSubviewToBack(destination.view)
+        destination.view.frame = source.view.frame
 
-        destination.view.layer.anchorPoint = CGPoint(x: 1, y: 0)
-        destination.view.frame = transitionContext.containerView.frame
-        destination.view.transform = CGAffineTransform(rotationAngle: -.pi/2)
+        let translation = CGAffineTransform(translationX: -destination.view.frame.midX, y: destination.view.frame.midY)
+        let rotation = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+        let backTranslation = CGAffineTransform(translationX: destination.view.frame.midX, y: -destination.view.frame.midY)
+        destination.view.transform = translation.concatenating(rotation).concatenating(backTranslation)
 
-        source.view.layer.anchorPoint = CGPoint(x: 0, y: 0)
-        source.view.frame = transitionContext.containerView.frame
+        UIView.animateKeyframes(withDuration: self.transitionDuration(using: transitionContext), delay: 0, options: .calculationModePaced, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.75) {
+                let translation = CGAffineTransform(translationX: -source.view.frame.midX, y: source.view.frame.midY)
+                let rotation = CGAffineTransform(rotationAngle: CGFloat.pi/2)
+                let backTranslation = CGAffineTransform(translationX: -source.view.frame.midX, y: source.view.frame.minY)
 
-        UIView.animate(withDuration: duration,
-                       animations: {
-            source.view.transform = CGAffineTransform(rotationAngle: .pi/2)
-            destination.view.transform = .identity
-        },
-                       completion: { isCompleted in
-            if transitionContext.transitionWasCancelled {
+                source.view.transform = translation.concatenating(rotation).concatenating(backTranslation)
+            }
+
+            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.4) {
                 destination.view.transform = .identity
             }
-            transitionContext.completeTransition(isCompleted && !transitionContext.transitionWasCancelled)
-            destination.view.isHidden = false
-        })
+        }) { finished in
+            if finished && !transitionContext.transitionWasCancelled {
+                source.view.transform = .identity
+            }
+            transitionContext.completeTransition(finished && !transitionContext.transitionWasCancelled)
+        }
     }
 }

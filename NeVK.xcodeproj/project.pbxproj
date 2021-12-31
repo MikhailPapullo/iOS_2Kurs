@@ -173,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				9445FF33274D9E1500140B5D /* NeVK */,
-				942AA567276E988D005F0122 /* LoadingStuff */,
 				9445FF32274D9E1500140B5D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -199,6 +198,7 @@
 				9445FF3D274D9E1700140B5D /* Assets.xcassets */,
 				9445FF3F274D9E1700140B5D /* LaunchScreen.storyboard */,
 				9445FF42274D9E1700140B5D /* Info.plist */,
+				942AA567276E988D005F0122 /* LoadingStuff */,
 			);
 			path = NeVK;
 			sourceTree = "<group>";

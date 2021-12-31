@@ -18,24 +18,12 @@ class SeenControl: UIControl {
     }()
 
     private var stackView: UIStackView = UIStackView()
-//    private var seenImageEmpty: UIImageView = UIImageView()
-//    private var seenImageFill: UIImageView = UIImageView()
     private var seenLable: UILabel = UILabel()
     private var bgView: UIView = UIView()
 
     private func setupView() {
 
         self.backgroundColor = .clear
-
-//        let imageEmpty = UIImage(systemName: "heart")
-//        likesImageEmpty.frame = CGRect(x: 10, y: 23, width: 23, height: 19)
-//        likesImageEmpty.image = imageEmpty
-//        likesImageEmpty.tintColor = .systemBlue
-//
-//        let imageFill = UIImage(systemName: "heart.fill")
-//        likesImageFill.frame = CGRect(x: 10, y: 23, width: 23, height: 19)
-//        likesImageFill.image = imageFill
-//        likesImageFill.tintColor = .red
 
         seenLable.frame = CGRect(x: self.frame.size.width - 8, y: 19, width: 12, height: 15)
         seenLable.text = String(seenCount)
@@ -44,7 +32,6 @@ class SeenControl: UIControl {
         seenLable.font = UIFont.systemFont(ofSize: 17)
 
         bgView.frame = bounds
-//        bgView.addSubview(seenImageEmpty)
         bgView.addSubview(seenLable)
         self.addSubview(bgView)
     }
@@ -53,19 +40,9 @@ class SeenControl: UIControl {
         if seenCount == 0 {
             self.seenLable.text = "1"
             seenCount = 1
-
-//            UIView.transition(from: likesImageEmpty,
-//                              to: likesImageFill,
-//                              duration: 0.2,
-//                              options: .transitionCrossDissolve)
         } else {
             self.seenLable.text = "0"
             seenCount = 0
-
-//            UIView.transition(from: likesImageFill,
-//                              to: likesImageEmpty,
-//                              duration: 0.2,
-//                              options: .transitionCrossDissolve)
         }
 
         seenLable.text = String(seenCount)

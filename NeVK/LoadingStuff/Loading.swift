@@ -5,6 +5,8 @@
 //  Created by Mikhail Papullo on 12/18/21.
 //
 
+// Так же мертвый код нужен для отработки различных видов анимациию. Пока не удаляю.
+
 import UIKit
 
 class Loading: UIViewController {
